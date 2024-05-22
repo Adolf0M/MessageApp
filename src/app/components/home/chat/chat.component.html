@@ -1,0 +1,143 @@
+<div class="flex h-screen max-h-screen flex-col">
+  <header class="flex items-center gap-4 border-b bg-gray-100/40 px-4 py-3 dark:bg-gray-800/40 md:h-14">
+    <div class="flex items-center gap-3">
+      <span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
+        <span class="flex h-full w-full items-center justify-center rounded-full bg-muted">JD</span>
+      </span>
+      <div class="space-y-0.5">
+        <div class="font-medium">John Doe</div>
+        <div class="text-xs text-gray-500 dark:text-gray-400">Online</div>
+      </div>
+    </div>
+    <div class="ml-auto flex items-center gap-2">
+      <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-5 w-5"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+      </button>
+      <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-5 w-5"
+        >
+          <polyline points="8 18 12 22 16 18"></polyline>
+          <polyline points="8 6 12 2 16 6"></polyline>
+          <line x1="12" x2="12" y1="2" y2="22"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <main class="flex-1 overflow-auto bg-gray-50 p-4 dark:bg-gray-950">
+    <div class="grid gap-4">
+      <div class="chat chat-start">
+				<div class="chat-image avatar">
+					<div class="w-10 rounded-full">
+						<img alt="Tailwind CSS chat bubble component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+					</div>
+				</div>
+				<div class="chat-header">
+					Obi-Wan Kenobi
+					<time class="text-xs opacity-50">12:45</time>
+				</div>
+				<div class="chat-bubble">You were the Chosen One!</div>
+				<div class="chat-footer opacity-50">
+					Delivered
+				</div>
+			</div>
+			<div class="chat chat-end">
+				<div class="chat-image avatar">
+					<div class="w-10 rounded-full">
+						<img alt="Tailwind CSS chat bubble component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+					</div>
+				</div>
+				<div class="chat-header">
+					Anakin
+					<time class="text-xs opacity-50">12:46</time>
+				</div>
+				<div class="chat-bubble">I hate you!</div>
+				<div class="chat-footer opacity-50">
+					Seen at 12:46
+				</div>
+			</div>
+    </div>
+  </main>
+  <footer class="flex items-center gap-2 border-t bg-gray-100/40 px-4 py-3 dark:bg-gray-800/40">
+    <input
+      class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 bg-transparent"
+      placeholder="Type your message..."
+      type="text"
+    />
+    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-5 w-5"
+      >
+        <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+      </svg>
+    </button>
+    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-5 w-5"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+        <line x1="9" x2="9.01" y1="9" y2="9"></line>
+        <line x1="15" x2="15.01" y1="9" y2="9"></line>
+      </svg>
+    </button>
+    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-5 w-5"
+      >
+        <path d="m22 2-7 20-4-9-9-4Z"></path>
+        <path d="M22 2 11 13"></path>
+      </svg>
+    </button>
+  </footer>
+</div>
