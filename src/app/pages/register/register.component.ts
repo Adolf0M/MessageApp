@@ -1,21 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from 'firebase/auth';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ RouterLink ],
+  imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
-
+  formReg: FormGroup;
+  constructor( 
+    private userService: UserService,
+    private router: Router,
+  ) {
+    this.formReg = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl()
+    })
+  }
+  ngOnInit(): void {
   }
 
-  singUp(email: string, password: string) {
-    this.authService.signUpWithEmailAndPassword(email, password);
+  onSubmit() {
+    this.userService.register(this.formReg.value)
+    .then(respone =>{
+      console.log(respone);
+      this.router.navigate(['/login']);
+
+    })
+    .catch(error => console.log(error));
   }
+
+  onNavigate() {
+    this.router.navigate(['/login']);
+  }
+
 }

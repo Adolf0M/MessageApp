@@ -1,9 +1,18 @@
 <div class="flex flex-col items-center justify-center h-screen">
   <div class="bg-base-300 p-8 rounded-lg shadow-md w-full max-w-md">
     <div class="flex flex-col items-center mb-6">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="h-12 w-12 text-gray-500 dark:text-gray-400 mb-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-12 w-12 text-gray-500 dark:text-gray-400 mb-2"
+      >
         <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path>
         <rect width="18" height="18" x="3" y="4" rx="2"></rect>
         <circle cx="12" cy="10" r="2"></circle>
@@ -12,39 +21,45 @@
       </svg>
       <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Bienvenido a MessageApp</h1>
     </div>
-    <form class="space-y-4">
+    <form class="space-y-4" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
       <div>
-        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="email">
           Correo electrónico
         </label>
-        <input #email
+        <input
           class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-          id="email" placeholder="Ingresa tu correo electrónico" type="email" />
+          id="email"
+          placeholder="Ingresa tu correo electrónico"
+          type="email"
+          formControlName="email"
+        />
       </div>
       <div>
-        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="password">
-          Contraseña
+          Contraseña
         </label>
-        <input #password
+        <input
           class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-          id="password" placeholder="Ingresa tu contraseña" type="password" />
+          id="password"
+          placeholder="Ingresa tu contraseña"
+          type="password"
+          formControlName="password"
+        />
       </div>
-      <button type="button" (click)="logIn(email.value, password.value)"
-        class="dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
-        Iniciar sesión
+      <button class="dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+        routerLink="/home">
+        Iniciar sesión
       </button>
-
-      <div class="flex items-center justify-center h-screen dark:bg-gray-800">
-        <button type="button" (click)="logInWithGoogle()"
-          class="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
-          <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy"
-            alt="google logo">
-          <span>Login with Google</span>
+      <div class="flex items-center justify-center dark:bg-gray-800" (click)="onClick()">
+        <button class="px-2 py-1 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+            <img class="w-4 h-4" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo">
+            <span class="text-sm">Login with Google</span>
         </button>
-      </div>
-
+    </div>
     </form>
     <div class="text-center mt-4 text-gray-500 dark:text-gray-400">
       ¿No tienes una cuenta?

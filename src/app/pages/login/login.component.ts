@@ -1,24 +1,52 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ RouterLink ],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) {
+  formLogin: FormGroup;
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.formLogin = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl()
+    })
+  }
+
+  ngOnInit(): void {
 
   }
-  logIn(email: string, password: string) {
-    this.authService.logInWithEmailAndPassword(email, password);
+
+  onSubmit() {
+    this.userService.login(this.formLogin.value)
+    .then(response => {
+      console.log(response);
+      this.router.navigate(['/home']);
+    })
+    .catch(error => console.log(error));
+  }
+ 
+  onClick() {
+    this.userService.loginWithGoogle()
+    .then(response => {
+      console.log(response);
+      this.router.navigate(['/home']);
+
+    })
+    .catch(error => console.log(error))
   }
 
-  logInWithGoogle() {
-    this.authService.logInWithGoogleProvider();
+  onNavigate() {
+    this.router.navigate(['/register']);
   }
-
 }
