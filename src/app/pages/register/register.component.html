@@ -7,13 +7,12 @@
         </h2>
         <p class="mt-2 text-center text-gray-600 dark:text-gray-400">
           ¿Ya tienes una cuenta?
-          <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-            routerLink="/login">
+          <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 cursor-pointer" (click)="onNavigate()">
             Inicia sesión
           </a>
         </p>
       </div>
-      <form class="space-y-4" action="#" method="POST">
+      <form class="space-y-4" [formGroup]="formReg" (ngSubmit)="onSubmit()">
         <div>
           <label
             class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -35,7 +34,7 @@
           <div class="mt-1">
             <input
               class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-              id="email" autocomplete="email" required="" type="email" name="email" />
+              id="email" autocomplete="email" required="" type="email" name="email" formControlName="email" />
           </div>
         </div>
         <div>
@@ -47,7 +46,7 @@
           <div class="mt-1">
             <input
               class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-              id="password" autocomplete="new-password" required="" type="password" name="password" />
+              id="password" autocomplete="new-password" required="" type="password" name="password" formControlName="password" />
           </div>
         </div>
         <div>
@@ -65,8 +64,7 @@
         <div>
           <button
             class="items-center whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:focus:ring-indigo-600"
-            type="submit"
-            routerLink="/home">
+            type="submit" value="Enviar">
             Registrate
           </button>
         </div>
