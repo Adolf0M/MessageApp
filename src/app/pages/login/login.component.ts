@@ -31,7 +31,7 @@ export class LoginComponent {
     this.userService.login(this.formLogin.value)
     .then(response => {
       console.log(response);
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/');
     })
     .catch(error => console.log(error));
   }
@@ -40,13 +40,14 @@ export class LoginComponent {
     this.userService.loginWithGoogle()
     .then(response => {
       console.log(response);
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/');
 
     })
     .catch(error => console.log(error))
   }
 
   onNavigate() {
-    this.router.navigate(['/register']);
+    this.router.navigate(['auth/register']);
   }
 }
+

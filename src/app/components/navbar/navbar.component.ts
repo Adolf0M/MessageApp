@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   onClick() {
     this.userService.logout()
     .then(() => {
-      this.router.navigate(['/register']);
+      this.router.navigate(['auth/register']);
 
     })
     .catch(error => console.log(error))

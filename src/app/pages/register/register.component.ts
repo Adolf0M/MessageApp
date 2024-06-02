@@ -30,14 +30,14 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.formReg.value)
     .then(respone =>{
       console.log(respone);
-      this.router.navigate(['/login']);
+      this.router.navigateByUrl('/');
 
     })
     .catch(error => console.log(error));
   }
 
   onNavigate() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['auth/login']);
   }
 
 }

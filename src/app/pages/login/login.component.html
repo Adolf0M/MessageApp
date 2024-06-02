@@ -26,12 +26,12 @@
         <label
           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="email">
-          Correo electrónico
+          Correo electrónico
         </label>
         <input
           class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
           id="email"
-          placeholder="Ingresa tu correo electrónico"
+          placeholder="Ingresa tu correo electrónico"
           type="email"
           formControlName="email"
         />
@@ -50,12 +50,11 @@
           formControlName="password"
         />
       </div>
-      <button class="dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-        routerLink="/home">
+      <button type="submit" value="Enviar" class="dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
         Iniciar sesión
       </button>
       <div class="flex items-center justify-center dark:bg-gray-800" (click)="onClick()">
-        <button class="px-2 py-1 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+        <button class="px-3 py-3 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
             <img class="w-4 h-4" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo">
             <span class="text-sm">Login with Google</span>
         </button>
@@ -63,8 +62,7 @@
     </form>
     <div class="text-center mt-4 text-gray-500 dark:text-gray-400">
       ¿No tienes una cuenta?
-      <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
-        routerLink="/register">
+      <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 cursor-pointer" (click)="onNavigate()">
         Registrate
       </a>
     </div>

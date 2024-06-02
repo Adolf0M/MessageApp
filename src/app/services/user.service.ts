@@ -1,25 +1,63 @@
-import { Injectable } from "@angular/core";
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from "@angular/fire/auth";
+import { Injectable, inject } from "@angular/core";
+import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from "@angular/fire/auth";
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    constructor(private auth: Auth) {}
+    private auth: Auth = inject(Auth);
+    readonly authState$: Observable<any> = authState(this.auth);
+    private isAuthenticated$: Observable<boolean>;
 
-    register({ email, password }: any) {
-        return createUserWithEmailAndPassword(this.auth, email, password);
+    constructor() {
+        this.isAuthenticated$ = this.authState$.pipe(map(user => !!user));
     }
 
-    login({ email, password}: any) {
-        return signInWithEmailAndPassword(this.auth, email, password);
+    isUserAuthenticated(): Observable<boolean> {
+        return this.isAuthenticated$;
     }
 
-    loginWithGoogle() {
-        return signInWithPopup(this.auth, new GoogleAuthProvider());
+    register({ email, password }: any): Promise<any> {
+        return this.isAuthenticated$.pipe(take(1)).toPromise().then(isAuthenticated => {
+            if (isAuthenticated) {
+                return Promise.reject('User is already logged in');
+            } else {
+                return createUserWithEmailAndPassword(this.auth, email, password);
+            }
+        }).catch(error => {
+            return Promise.reject(error);
+        });
     }
 
-    logout() {
-        return signOut(this.auth);
+    login({ email, password }: any): Promise<any> {
+        return this.isAuthenticated$.pipe(take(1)).toPromise().then(isAuthenticated => {
+            if (isAuthenticated) {
+                return Promise.reject('User is already logged in');
+            } else {
+                return signInWithEmailAndPassword(this.auth, email, password);
+            }
+        }).catch(error => {
+            return Promise.reject(error);
+        });
     }
-} 
+
+    loginWithGoogle(): Promise<any> {
+        return this.isAuthenticated$.pipe(take(1)).toPromise().then(isAuthenticated => {
+            if (isAuthenticated) {
+                return Promise.reject('User is already logged in');
+            } else {
+                return signInWithPopup(this.auth, new GoogleAuthProvider());
+            }
+        }).catch(error => {
+            return Promise.reject(error);
+        });
+    }
+
+    logout(): Promise<void> {
+        return signOut(this.auth).catch(error => {
+            return Promise.reject(error);
+        });
+    }
+}
