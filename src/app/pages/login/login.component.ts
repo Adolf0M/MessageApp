@@ -35,7 +35,7 @@ export class LoginComponent {
     })
     .catch(error => console.log(error));
   }
- 
+
   onClick() {
     this.userService.loginWithGoogle()
     .then(response => {
