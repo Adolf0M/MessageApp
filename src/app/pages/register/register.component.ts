@@ -31,13 +31,16 @@ export class RegisterComponent implements OnInit {
     .then(respone =>{
       console.log(respone);
       this.router.navigateByUrl('/');
-
+      this.userService.openSnackBar('Inicio de sesión éxitoso 😎');
     })
     .catch(error => console.log(error));
+    this.userService.openSnackBar('Inicio de sesión fallido...');
   }
 
   onNavigate() {
     this.router.navigate(['auth/login']);
   }
 
+
+  
 }

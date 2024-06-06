@@ -8,29 +8,34 @@ export const routerInjection = () => inject(Router);
 export const authStateObs$ = () => inject(UserService).authState$;
 
 export const authGuard: CanActivateFn = () => {
-  const router = routerInjection();
+  const userService = inject(UserService);
 
-  return authStateObs$().pipe(
-    map((user) => {
+  return userService.authState$.pipe(
+    map(user => {
       if (!user) {
-        router.navigateByUrl('auth/login');
+        console.log('No user found, redirecting to login');
         return false;
       }
+      console.log('User is authenticated');
       return true;
     })
   );
 };
+
 
 export const publicGuard: CanActivateFn = () => {
-  const router = routerInjection();
+  const userService = inject(UserService);
 
-  return authStateObs$().pipe(
-    map((user) => {
+  return userService.authState$.pipe(
+    map(user => {
       if (user) {
-        router.navigateByUrl('/');
+        console.log('User is already authenticated, redirecting to home');
         return false;
+      } else {
+        console.log('User is not authenticated');
+        return true;
       }
-      return true;
     })
   );
 };
+

@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
         appId: "1:592455073476:web:3cc124fa03b1985b461391"
       })
     ),
-    provideAuth(() => getAuth()),
+    provideAuth(() => getAuth()), provideAnimationsAsync(),
   ],
 };

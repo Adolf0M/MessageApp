@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Importar CommonModule
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule], // Agregar CommonModule a los imports
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
@@ -15,16 +16,15 @@ export class NavbarComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {}
-  ngOnInit(): void {
-    
-  }
+
+  ngOnInit(): void {}
 
   onClick() {
     this.userService.logout()
-    .then(() => {
-      this.router.navigate(['auth/register']);
-
-    })
-    .catch(error => console.log(error))
+      .then(() => {
+        this.router.navigate(['auth/register']);
+        this.userService.openSnackBar('Cerrando sesión... ');
+      })
+      .catch(error => console.log(error))
   }
 }

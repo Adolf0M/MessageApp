@@ -50,7 +50,7 @@
           formControlName="password"
         />
       </div>
-      <button type="submit" value="Enviar" class="dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
+      <button mat-flat-button color="accent" type="submit" value="Enviar" class="dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-lg inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
         Iniciar sesión
       </button>
       <div class="flex items-center justify-center dark:bg-gray-800" (click)="onClick()">
@@ -64,6 +64,12 @@
       ¿No tienes una cuenta?
       <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 cursor-pointer" (click)="onNavigate()">
         Registrate
+      </a>
+    </div>
+    <div class="text-center mt-4 text-gray-500 dark:text-gray-400">
+      Olvidaste tu contrasena
+      <a class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 cursor-pointer" (click)="onForgot()">
+        Recuperar
       </a>
     </div>
   </div>
