@@ -1,15 +1,23 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
-  {
-    path: '', 
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
   {
     path: 'home',
-    title: 'MessageApp',
-    loadComponent: () => 
-      import('./pages/home/home.component').then((m) => m.HomeComponent),
+    component: HomeComponent,
+    ...canActivate(() => redirectUnauthorizedTo(['/login']))
   },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

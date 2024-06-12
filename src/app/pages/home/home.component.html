@@ -1,33 +1,40 @@
-<main class="grid grid-cols-2">
-  <section class="flex flex-col px-6 w-2/3">
-    <div>
-      <div class="flex-row space-x-2">
-        <button class="btn rounded-full w-[5rem] text-sm btn-accent">Chats</button>
-        <button class="btn rounded-full w-[5rem] text-sm btn-ghost">Grupos</button>
-        <button class="btn rounded-full w-[7rem] text-sm btn-ghost">No leidos</button>
+<div class="flex flex-row h-screen bg-base-300">
+
+  <section [class.hidden]="showProfile"  class="flex flex-col w-2/4 bg-base-300 h-full">
+    <header>
+      <app-navbar (profileSelected)="toggleProfile()" (homeSelected)="showChats()" />
+      <div class="flex-row space-x-2 py-2 px-6">
+        <button class="btn rounded-full w-[5rem] text-sm btn-ghost focus:bg-primary focus:text-black">Chats</button>
+        <button class="btn rounded-full w-[5rem] text-sm btn-ghost focus:bg-primary focus:text-black">Grupos</button>
+        <button class="btn rounded-full w-[7rem] text-sm btn-ghost focus:bg-primary focus:text-black">No leidos</button>
       </div>
-      <div class="divider"></div>
-      <div class="flex flex-row hover:bg-[#51627625] p-2 rounded-lg cursor-pointer">
-        <div class="avatar w-[4rem]">
-          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" class=" rounded-full">
-        </div>
-        <div class="flex flex-col">
-          <div class="ps-4 flex flex-row space-x-32">
-            <span class="font-bold text-xl">Jenny Doe</span>
-          </div>
-          <div class="ps-4 flex flex-row space-x-32">
-            <h1>Ultimo mensaje de prueba</h1>
-          </div>
-          <div class="ps-4 flex flex-row space-x-10">
-            <span>11:30 p.m.</span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <hr class="border-slate-600">
+    </header>
+    <main class="flex-1 overflow-auto bg-base-300 custom-scrollbar">
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+      <app-conversation />
+    </main>
   </section>
-  <section class="flex flex-col px-6">
-    <div class="w-full bg-black">
-      
-    </div>
+
+  <section [class.hidden]="!showProfile" class="w-2/4 h-full">
+    <app-navbar class=""
+      (profileSelected)="toggleProfile()" 
+      (homeSelected)="showChats()" />
+    <app-profile 
+    class="border-r border-slate-600 h-full transition-all animate-fade-right" />
   </section>
-</main>
+
+  <section class="w-full h-full">
+    <app-chat />
+  </section>
+</div>
